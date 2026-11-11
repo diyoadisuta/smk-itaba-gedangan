@@ -1,0 +1,20 @@
+# Proteksi CMS SMK ITABA (Apache / cPanel)
+Options -Indexes
+DirectoryIndex index.php index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Arahkan URL lama .html ke .php (301 permanent) agar link/bookmark lama tetap jalan.
+  RewriteRule ^(index|profil|program|galeri|sambutan|kontak|spmb)\.html$ $1.php [R=301,L]
+
+  # Blokir akses langsung ke folder internal & database lokal.
+  RewriteRule ^(includes|storage|tools)/ - [F,L]
+</IfModule>
+
+<FilesMatch "^(config\.php|config\.sample\.php|database\.sql|\.gitignore|README\.md)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>
+

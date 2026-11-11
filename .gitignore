@@ -11,3 +11,9 @@ Desktop.ini
 *.zip
 *.cdr
 KEBUTUHAN FILE WEB SEKOLAH_/
+
+# CMS local config & database
+config.php
+storage/
+tools/php/
+jalankan-lokal.bat

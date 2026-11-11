@@ -1,0 +1,8 @@
+# Larang eksekusi script di dalam folder upload.
+Options -Indexes -ExecCGI
+<FilesMatch "\.(php|phtml|phar|pl|py|cgi|sh|htaccess)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>
+
